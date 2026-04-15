@@ -1,61 +1,187 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<h1>📦 Product CRUD System (Laravel 8 + XAMPP)</h1>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+<h2>🛠 Tech Stack</h2>
+- XAMPP v3.3.0<br>
+- Laravel Framework 8.83.29<br>
+- Node v22.22.2<br>
+- MySQL (phpMyAdmin)<br>
 
-## About Laravel
+<hr>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<h2>🚀 Setup Instructions</h2>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<h3>1. Create Database</h3>
+Open: <br>
+<a href="http://localhost/phpmyadmin/">http://localhost/phpmyadmin/</a><br><br>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Create database:<br>
+<code>productsystem</code><br>
 
-## Learning Laravel
+<hr>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<h3>2. Install Dependencies</h3>
+<pre>
+composer install
+npm install
+</pre>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+<hr>
 
-## Laravel Sponsors
+<h3>3. Environment Setup</h3>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Update <code>.env</code>:<br>
+<pre>
+DB_DATABASE=productsystem
+DB_USERNAME=root
+DB_PASSWORD=
+</pre>
 
-### Premium Partners
+<hr>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+<h3>4. Run Migration + Seeder</h3>
+<pre>
+php artisan migrate
+php artisan db:seed
+</pre>
 
-## Contributing
+<hr>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+<h3>5. Build Frontend Assets</h3>
+<pre>
+npm run dev
+</pre>
 
-## Code of Conduct
+<hr>
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+<h3>6. Start Server</h3>
+<pre>
+php artisan serve
+</pre>
 
-## Security Vulnerabilities
+<hr>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+<h2>📡 API Documentation</h2>
 
-## License
+<h3>Base URL</h3>
+<code>http://localhost:8000</code>
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<hr>
+
+<h3>🟢 GET /products</h3>
+
+<strong>Response:</strong>
+<pre>
+[
+  {
+    "id": 1,
+    "name": "iPhone",
+    "category_id": 1,
+    "price": 5000,
+    "stock": 10,
+    "enabled": true,
+    "description": "Apple phone",
+    "category": {
+      "id": 1,
+      "name": "Electronics"
+    }
+  }
+]
+</pre>
+
+<hr>
+
+<h3>➕ POST /products</h3>
+
+<strong>Request Body:</strong>
+<pre>
+{
+  "name": "iPhone 15",
+  "category_id": 1,
+  "description": "Apple latest phone",
+  "price": 5999.00,
+  "stock": 5,
+  "enabled": true
+}
+</pre>
+
+<strong>Response:</strong>
+<pre>
+{
+  "id": 2,
+  "name": "iPhone 15",
+  "category_id": 1,
+  "price": 5999.00,
+  "stock": 5,
+  "enabled": true,
+  "description": "Apple latest phone"
+}
+</pre>
+
+<hr>
+
+<h3>✏️ PUT /products/{id}</h3>
+
+<strong>Request Body:</strong>
+<pre>
+{
+  "name": "iPhone 15 Pro",
+  "category_id": 1,
+  "description": "Updated model",
+  "price": 6500,
+  "stock": 8,
+  "enabled": false
+}
+</pre>
+
+<strong>Response:</strong>
+<pre>
+{
+  "message": "Updated successfully"
+}
+</pre>
+
+<hr>
+
+<h3>❌ DELETE /products/{id}</h3>
+
+<strong>Response:</strong>
+<pre>
+{
+  "message": "Deleted successfully"
+}
+</pre>
+
+<hr>
+
+<h3>🧺 POST /products/bulk-delete</h3>
+
+<strong>Request Body:</strong>
+<pre>
+{
+  "ids": [1, 2, 3]
+}
+</pre>
+
+<strong>Response:</strong>
+<pre>
+{
+  "message": "Bulk deleted successfully"
+}
+</pre>
+
+<hr>
+
+<h2>⚠️ Notes</h2>
+- Soft delete enabled for products<br>
+- Category is required (foreign key)<br>
+- Enabled field is boolean (true/false)<br>
+
+<hr>
+
+<h2>🚀 Available Commands</h2>
+<pre>
+php artisan migrate
+php artisan db:seed
+npm run dev
+php artisan serve
+</pre>
