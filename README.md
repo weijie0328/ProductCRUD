@@ -136,7 +136,7 @@ php artisan serve
 <strong>Response:</strong>
 <pre>
 {
-  "message": "Updated successfully"
+  "message": "Product updated successfully"
 }
 </pre>
 
@@ -147,7 +147,7 @@ php artisan serve
 <strong>Response:</strong>
 <pre>
 {
-  "message": "Deleted successfully"
+  "message": "Deleted"
 }
 </pre>
 
@@ -165,7 +165,7 @@ php artisan serve
 <strong>Response:</strong>
 <pre>
 {
-  "message": "Bulk deleted successfully"
+  "message": "Bulk deleted"
 }
 </pre>
 
